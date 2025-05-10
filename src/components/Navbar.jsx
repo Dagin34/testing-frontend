@@ -34,23 +34,23 @@ export default function Navbar() {
 
   return (
     <div className="navbar top-0 left-0 w-full h-16 sticky flex items-center justify-between px-4 transition-all duration-300 z-50 shadow-lg bg-base-300">
-      <a href="/" className="navbar__logo flex justify-center items-center gap-3">
+      <a href="/" className="navbar__logo flex justify-center items-center gap-3 hover:text-primary">
         Testing Auth
       </a>
       <div className="navbar__links gap-x-8 flex items-center max-md:hidden">
         {authUser && (
           <>
-            <a href="/profile" className="flex justify-center items-center gap-2">
+            <a href="/profile" className="flex justify-center items-center gap-2 hover:text-primary">
               <Profile className="size-5" />
               Profile
             </a>
-            <a onClick={() => handleLogout()} className="cursor-pointer flex justify-center items-center gap-2">
+            <a onClick={() => handleLogout()} className="cursor-pointer flex justify-center items-center gap-2 hover:text-primary">
               <LogOut className="size-5" />
               Logout
             </a>
           </>
         )}
-        <label className="toggle text-base-content">
+        <label className="toggle text-base-content hover:text-primary">
           <input
             type="checkbox"
             checked={theme === 'dark'} // Correctly set checked state
