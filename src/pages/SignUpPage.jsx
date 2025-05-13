@@ -34,44 +34,44 @@ const SignUpPage = () => {
 
   return (
     <div className='flex justify-center overflow-hidden max-lg:px-4 pt-[5%]'>
-      <div className='bg-form p-8 rounded-lg shadow-md w-full max-w-md overflow-hidden max-lg:px-6 bg-info/25'>
+      <div className='bg-base-300 p-8 rounded-lg shadow-md w-full max-w-md overflow-hidden max-lg:px-6 '>
         <h2 className='text-2xl font-bold text-center mb-2'>Sign Up</h2>
-        <p className='mb-10 text-center'>Get started with your free account</p>
+        <p className='mb-10 tracking-wide text-center'>Get started with your free account</p>
         <form onSubmit={handleSubmit}>
           <div className='mb-6 relative'>
-            <label className='absolute border bg-primary text-primary-content left-4 text-sm bottom-8 px-3 block mb-2' htmlFor='fullName'>Full Name</label>
+            <label className='absolute rounded tracking-wider bg-base-100  left-2 text-sm bottom-8 px-3 block mb-2' htmlFor='fullName'>Full Name</label>
             <input
               type='text'
               id='fullName'
               name='fullName'
               value={formData.fullName}
               onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-              className='w-full px-3 py-3 border rounded focus:outline-none focus:ring focus:ring-info'
+              className='w-full px-3 py-3 border bg-base-100 rounded focus:outline-none focus:ring focus:ring-info'
             />
           </div>
           <div className='mb-6 relative'>
-            <label className='absolute border bg-primary text-primary-content left-4 text-sm bottom-8 px-3 block mb-2' htmlFor='email'>Email</label>
+            <label className='absolute rounded tracking-wider bg-base-100  left-2 text-sm bottom-8 px-3 block mb-2' htmlFor='email'>Email</label>
             <input
               type='email'
               id='email'
               name='email'
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              className='w-full px-3 py-3 border rounded focus:outline-none focus:ring focus:ring-info'
+              className='w-full px-3 py-3 border bg-base-100 rounded focus:outline-none focus:ring focus:ring-info'
             />
           </div>
           <div className='mb-2 relative'>
-            <label className='absolute border bg-primary text-primary-content left-4 text-sm bottom-22 px-3 block mb-2' htmlFor='password'>Password</label>
+            <label className='absolute rounded bg-base-100 tracking-wider left-2 text-sm bottom-22 px-3 block mb-2' htmlFor='password'>Password</label>
             <input
               type={showPassword ? 'text' : 'password'}
               id='password'
               name='password'
               value={formData.password}
               onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-              className='w-full px-3 py-3 border rounded focus:outline-none focus:ring focus:ring-info'
+              className='w-full px-3 py-3 border bg-base-100 rounded focus:outline-none  focus:ring focus:ring-info'
             />
 
-            <button type="button" onClick={() => setShowPassword(!showPassword)} className="mt-8 text-info hover:text-primary">
+            <button type="button" onClick={() => setShowPassword(!showPassword)} className="mt-8 text-info hover:text-primary opacity-0">
               {showPassword ? 'Hide Password' : 'Show Password'}
             </button>
           </div>
@@ -88,7 +88,7 @@ const SignUpPage = () => {
           </button>
         </form>
         <p className='mt-2 text-center'>
-          Already have an account? <a href='/login' className='text-info hover:text-primary'>Login</a>
+          Already have an account? <a href='/login' className='text-primary hover:text-primary'>Login</a>
         </p>
       </div>
     </div>
