@@ -61,7 +61,7 @@ const LoginPage = () => {
             </button>
           </div>
 
-          <button type="submit" disabled={isLoggingIn} className={`w-full bg-primary text-primary-content hover:scale-105 transition-transform duration-300 py-2 rounded ${isLoggingIn && 'opacity-50 cursor-not-allowed'}`}>
+          <button type="submit" id='submit-button' disabled={isLoggingIn} className={`w-full bg-primary text-primary-content hover:scale-105 transition-transform duration-300 py-2 rounded ${isLoggingIn && 'opacity-50 cursor-not-allowed'}`}>
             {isLoggingIn ? (
               <div className='flex items-center justify-center'>
                 <Loader2 className='animate-spin mr-2 size-5' />
