@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useAuthStore } from '../store/useAuthStore'
-import { Loader2 } from 'lucide-react'
+import { Loader2, Eye, EyeOff } from 'lucide-react'
 import { toast } from 'react-hot-toast'
 
 const LoginPage = () => {
@@ -19,6 +19,10 @@ const LoginPage = () => {
     if (formData.password.length < 6) return toast.error('Password must be at least 6 characters long')
 
     return true
+  }
+
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
   }
 
   const handleSubmit = async (e) => {
@@ -47,6 +51,8 @@ const LoginPage = () => {
             />
           </div>
           <div className='mb-2 relative'>
+            {/* <Eye className={`absolute right-0 top-0 h-full w-1/8 p-3 rounded-r bg-base-100 border hover:bg-base-200 transition-all duration-150` + showPassword ? 'hidden' : 'block'} onClick={() => {toggleShowPassword()}}/>
+            <EyeOff className={`absolute right-0 top-0 h-full w-1/8 p-3 rounded-r bg-base-100 border hover:bg-base-200 transition-all duration-150` + showPassword ? 'block' : 'hidden'} onClick={() => {toggleShowPassword()}}/> */}
             <label className='absolute rounded bg-base-100 tracking-wider left-2 text-sm bottom-22 px-3 block mb-2' htmlFor='password'>Password</label>
             <input
               type={showPassword ? 'text' : 'password'}
@@ -56,7 +62,7 @@ const LoginPage = () => {
               onChange={(e) => setFormData({ ...formData, password: e.target.value })}
               className='w-full px-3 py-3 border bg-base-100 rounded focus:outline-none focus:ring focus:ring-info'
             />
-            <button type="button" onClick={() => setShowPassword(!showPassword)} className="mt-8 text-info opacity-0 hover:text-primary">
+            <button type="button" onClick={() => setShowPassword(!showPassword)} className="mt-8 text-info-content hover:text-primary">
               {showPassword ? 'Hide Password' : 'Show Password'}
             </button>
           </div>
