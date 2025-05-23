@@ -33,7 +33,7 @@ const ProfilePage = () => {
     <div className=''>
       <div className="w-full px-10 pt-6">
         <div className="relative mb-12 max-w-2xl mx-auto mt-24">
-          <div className="rounded overflow-hidden shadow-md bg-info/25 border-blue-300">
+          <div className="rounded overflow-hidden shadow-md bg-base-300 border-blue-300">
             <div className="absolute -mt-20 w-full flex justify-center">
               <div className="h-32 w-32">
                 <div className='relative flex justify-end items-end p-2'>
@@ -46,30 +46,30 @@ const ProfilePage = () => {
               </div>
             </div>
             <div className="px-6 mt-16 mb-6">
-              <h1 className="font-bold text-3xl text-center mb-1">{authUser?.fullName}</h1>
+              <h1 name="fullname" className="font-bold text-3xl text-center mb-1">{authUser?.fullName}</h1>
               <p className="text-sm text-center mb-12">{info.position}</p>
               {/* Add functionality to edit users here */}
               <div>
                 <div className='relative'>
-                  <p className='bg-primary text-primary-content text-sm absolute left-6 px-4 border top-[-10px]'>Email</p>
+                  <p className='bg-base-100  text-sm absolute left-4 rounded px-4  top-[-15px]'>Email</p>
                 </div>
-                <p className="text-justify text-base py-4 font-normal bg-white/5 rounded-sm px-4 mt-4">
+                <p name="email" className="text-justify text-base py-4 font-normal bg-base-100 rounded-sm px-4 mt-4">
                   {authUser?.email}
                 </p>
               </div>
               <div>
                 <div className='relative'>
-                  <p className='bg-primary text-primary-content text-sm absolute left-6 px-4 border top-[-10px]'>Phone Number</p>
+                  <p className='bg-base-100  text-sm absolute left-4 px-4 rounded  top-[-15px]'>Phone Number</p>
                 </div>
-                <p className="text-justify text-base py-4 font-normal bg-white/5 rounded-sm px-4 mt-4">
+                <p name="phonenumber" className="text-justify text-base py-4 font-normal bg-base-100 rounded-sm px-4 mt-8">
                   {info.phone}
                 </p>
               </div>
               <div>
                 <div className='relative'>
-                  <p className='bg-primary text-primary-content text-sm absolute left-6 px-4 border top-[-10px]'>Bio</p>
+                  <p className='bg-base-100  text-sm absolute rounded left-4 px-4  top-[-15px]'>Bio</p>
                 </div>
-                <p className="text-justify text-base py-4 font-normal bg-white/5 rounded-sm px-4 mt-8">
+                <p className="text-justify text-base py-4 font-normal bg-base-100 rounded-sm px-4 mt-8">
                   {authUser?.bio}
                 </p>
               </div>
@@ -78,7 +78,7 @@ const ProfilePage = () => {
 
 
 
-          <div className="bg-info/25 overflow-hidden shadow rounded-md mt-8">
+          <div className="bg-base-300 overflow-hidden shadow rounded-md mt-8">
             <div className="px-4 py-5 pb-2 sm:px-6">
               <h3 className="leading-6 font-medium text-xl">
                 User Profile

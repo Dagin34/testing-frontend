@@ -4,7 +4,35 @@
   themes: all;
 }
 
+
 * {
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+  background-color: "black" !important;
+  
 }
+
+[data-theme="dark"] {
+  .the-btn {
+    background-color: #1EA1F1;
+    border-color: #1EA1F1;
+  }
+  .the-btn:hover {
+    background-color: #1C96E1;
+    border-color: #1C96E1;
+  }
+}
+[data-theme="garden"] {
+  .the-btn {
+    background-color: #1EA1F1;
+    border-color: #1EA1F1;
+  }
+  .the-btn:hover {
+    background-color: #1C96E1;
+    border-color: #1C96E1;
+  }
+}
+
+
+
+

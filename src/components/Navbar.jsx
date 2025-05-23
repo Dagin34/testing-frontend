@@ -40,11 +40,11 @@ export default function Navbar() {
       <div className="navbar__links gap-x-8 flex items-center max-md:hidden">
         {authUser && (
           <>
-            <a href="/profile" className="flex justify-center items-center gap-2 hover:text-primary">
+            <a name="profile" href="/profile" className="flex justify-center items-center gap-2 hover:text-primary">
               <Profile className="size-5" />
               Profile
             </a>
-            <a onClick={() => handleLogout()} className="cursor-pointer flex justify-center items-center gap-2 hover:text-primary">
+            <a name='logout' onClick={() => handleLogout()} className="cursor-pointer flex justify-center items-center gap-2 hover:text-primary">
               <LogOut className="size-5" />
               Logout
             </a>

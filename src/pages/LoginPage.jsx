@@ -73,7 +73,7 @@ const LoginPage = () => {
           </button>
         </form>
         <p className='mt-2 text-center'>
-          Done have an account? <a href='/signup' className='text-primary hover:text-primary'>Sign up</a>
+          Don't have an account? <a href='/signup' className='text-primary hover:text-primary'>Sign up</a>
         </p>
       </div>
     </div>

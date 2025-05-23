@@ -76,7 +76,7 @@ const SignUpPage = () => {
             </button>
           </div>
 
-          <button type="submit" disabled={isSigningUp} className={`w-full bg-primary text-primary-content hover:scale-105 transition-transform duration-300 py-2 rounded ${isSigningUp && 'opacity-50 cursor-not-allowed'}`}>
+          <button id='submit-button' type="submit" disabled={isSigningUp} className={`w-full bg-primary text-primary-content hover:scale-105 transition-transform duration-300 py-2 rounded ${isSigningUp && 'opacity-50 cursor-not-allowed'}`}>
             {isSigningUp ? (
               <div className='flex items-center justify-center'>
                 <Loader2 className='animate-spin mr-2 size-5' />

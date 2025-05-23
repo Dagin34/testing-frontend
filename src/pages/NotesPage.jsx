@@ -48,7 +48,7 @@ const NotesPage = () => {
   return (
     <div className="p-6 flex justify-center items-center relative min-full">
       <div className='xl:w-2/3 md:w-5/6 w-[98%]'>
-        <h1 className="text-2xl font-bold mb-4 pl-6">Notes</h1>
+        <h1 name="heading" className="text-2xl font-bold mb-4 pl-6">Notes</h1>
         <div>
           {notes.length === 0 ? (
             <p>No notes available.</p>
