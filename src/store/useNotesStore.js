@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import toast from "react-hot-toast";
 import { axiosInstance } from "../lib/axios";
+import { useAuthStore } from "./useAuthStore";
 
 export const useNotesStore = create((set, get) => ({
   notes: [],
@@ -9,7 +10,10 @@ export const useNotesStore = create((set, get) => ({
   fetchNotes: async () => {
     set({ isFetchingNotes: true });
     try {
-      const res = await axiosInstance.get('/notes');
+      const { authUser } = useAuthStore.getState();
+      const res = await axiosInstance.get('/notes', {
+        params: { userId: authUser._id },
+      });
       set({ notes: res.data.notes });
     } catch (error) {
       toast.error(error.response?.data?.message || 'Error fetching notes');
@@ -21,7 +25,8 @@ export const useNotesStore = create((set, get) => ({
 
   createNote: async (noteData) => {
     try {
-      const res = await axiosInstance.post('/notes/create', noteData);
+      const { authUser } = useAuthStore.getState();
+      const res = await axiosInstance.post('/notes/create', { ...noteData, userId: authUser._id });
       set({ notes: [...get().notes, res.data.note] });
       toast.success('Note created successfully!');
     } catch (error) {
@@ -32,7 +37,8 @@ export const useNotesStore = create((set, get) => ({
 
   updateNote: async (noteId, noteData) => {
     try {
-      const res = await axiosInstance.post('/notes/update', { note_id: noteId, ...noteData });
+      const { authUser } = useAuthStore.getState();
+      const res = await axiosInstance.post('/notes/update', { _id: noteId, ...noteData, userId: authUser._id });
       const updatedNote = res.data.note;
       set({
         notes: get().notes.map(note => note._id === noteId ? updatedNote : note)
@@ -46,7 +52,8 @@ export const useNotesStore = create((set, get) => ({
 
   deleteNote: async (noteId) => {
     try {
-      await axiosInstance.post('/notes/delete', { note_id: noteId });
+      const { authUser } = useAuthStore.getState();
+      await axiosInstance.post('/notes/delete', { note_id: noteId, userId: authUser._id });
       set({ notes: get().notes.filter(note => note._id !== noteId) });
       toast.success('Note deleted successfully!');
     } catch (error) {

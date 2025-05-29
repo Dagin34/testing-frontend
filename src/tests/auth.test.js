@@ -106,8 +106,8 @@ const signin_testcase = [
     error_message: "required",
     data: {
       fullname: "",
-      email: "bereket@gmail.com",
-      password: "b123456789",
+      email: "",
+      password: "",
     },
   },
   {
@@ -171,11 +171,12 @@ const signin_testcase = [
     },
   },
 ];
+
 let driver;
 describe("this are login tests", () => {
-  before(async()=>{
+  before(async () => {
     //opens browser before any test begins
-     driver = await new Builder().forBrowser(Browser.CHROME).build();
+    driver = await new Builder().forBrowser(Browser.CHROME).build();
   })
   login_test_cases.forEach(({ testname, data, expectation, error_message }) => {
     it(testname, async () => {
@@ -223,8 +224,8 @@ describe("this are login tests", () => {
     await driver.get("http://localhost:5173/login");
 
     //loggin
-    const useremail="bereket@gmail.com"
-    const userpassword="b123456789"
+    const useremail = "bereket@gmail.com"
+    const userpassword = "b123456789"
     //find enteries in the ui
     const email = driver.findElement(By.name("email"));
     const password = driver.findElement(By.name("password"));
@@ -262,7 +263,7 @@ describe("this are login tests", () => {
   });
 });
 
-describe("this are tests for sign in", async() => {
+describe("this are tests for sign in", async () => {
   signin_testcase.forEach(({ testname, data, expectation, error_message }) => {
     it(testname, async () => {
       //navigate to signin page
@@ -326,8 +327,8 @@ describe("this are tests for sign in", async() => {
       until.elementLocated(By.id("submit-button")),
       1000
     );
-    const userfull_name="bereket136"
-    const useremail="bereket136@gmail.com"
+    const userfull_name = "bereket136"
+    const useremail = "bereket136@gmail.com"
     //insert data to the respective enteries if available
     fullname && (await fullname.sendKeys(userfull_name));
 
@@ -355,13 +356,13 @@ describe("this are tests for sign in", async() => {
     assert.strictEqual(useremail, await profile_email.getText());
 
 
-    
+
   });
- 
-  after(()=>{
+
+  after(() => {
     //closes browser after all tests are run
-     driver.quit();
+    driver.quit();
   })
-  
-  
+
+
 });

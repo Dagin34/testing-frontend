@@ -47,7 +47,7 @@ const ProfilePage = () => {
             </div>
             <div className="px-6 mt-16 mb-6">
               <h1 name="fullname" className="font-bold text-3xl text-center mb-1">{authUser?.fullName}</h1>
-              <p className="text-sm text-center mb-12">{info.position}</p>
+              {/* <p className="text-sm text-center mb-12">{info.position}</p> */}
               {/* Add functionality to edit users here */}
               <div>
                 <div className='relative'>
@@ -55,22 +55,6 @@ const ProfilePage = () => {
                 </div>
                 <p name="email" className="text-justify text-base py-4 font-normal bg-base-100 rounded-sm px-4 mt-4">
                   {authUser?.email}
-                </p>
-              </div>
-              <div>
-                <div className='relative'>
-                  <p className='bg-base-100  text-sm absolute left-4 px-4 rounded  top-[-15px]'>Phone Number</p>
-                </div>
-                <p name="phonenumber" className="text-justify text-base py-4 font-normal bg-base-100 rounded-sm px-4 mt-8">
-                  {info.phone}
-                </p>
-              </div>
-              <div>
-                <div className='relative'>
-                  <p className='bg-base-100  text-sm absolute rounded left-4 px-4  top-[-15px]'>Bio</p>
-                </div>
-                <p className="text-justify text-base py-4 font-normal bg-base-100 rounded-sm px-4 mt-8">
-                  {authUser?.bio}
                 </p>
               </div>
             </div>
