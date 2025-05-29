@@ -37,7 +37,7 @@ function App() {
         <Route path="/profile" element={authUser ? <ProfilePage /> : <Navigate to={"/login"} />} />
         <Route path="/" element={authUser ? <NotesPage /> : <Navigate to={"/login"} />} />
       </Routes>
-      <Toaster position="top-center" reverseOrder={false} />
+      <Toaster position="bottom-right" reverseOrder={false} />
     </div>
   );
 }

@@ -5,7 +5,7 @@ import assert from "assert";
 
 let login_test_cases = [
   {
-    testname: "correct loggin",
+    testname: "Correct Login",
     expectation: "login",
     error_message: null,
     data: {
@@ -14,7 +14,7 @@ let login_test_cases = [
     },
   },
   {
-    testname: "handeled incorrect email",
+    testname: "Handled Incorrect Email",
     expectation: "error message",
     error_message: "Invalid credentials",
     data: {
@@ -23,7 +23,7 @@ let login_test_cases = [
     },
   },
   {
-    testname: "handeled incorrect password",
+    testname: "Handled Incorrect Password",
     expectation: "error message",
     error_message: "Invalid credentials",
     data: {
@@ -32,7 +32,7 @@ let login_test_cases = [
     },
   },
   {
-    testname: "handeled incorrect password and email",
+    testname: "Handled Incorrect Password and Email",
     expectation: "error message",
     error_message: "Invalid credentials",
     data: {
@@ -41,7 +41,7 @@ let login_test_cases = [
     },
   },
   {
-    testname: "handeled missing password",
+    testname: "Handled Missing Password",
     expectation: "error message",
     error_message: "required",
     data: {
@@ -50,7 +50,7 @@ let login_test_cases = [
     },
   },
   {
-    testname: "handeled missing email",
+    testname: "Handled Missing Email",
     expectation: "error message",
     error_message: "required",
     data: {
@@ -59,7 +59,7 @@ let login_test_cases = [
     },
   },
   {
-    testname: "short password",
+    testname: "Handled Short Password",
     expectation: "error message",
     error_message: "Password must be at least 6 characters long",
     data: {
@@ -71,7 +71,7 @@ let login_test_cases = [
 
 const signin_testcase = [
   {
-    testname: "missing password",
+    testname: "Missing Password",
     expectation: "error message",
     error_message: "required",
     data: {
@@ -81,7 +81,7 @@ const signin_testcase = [
     },
   },
   {
-    testname: "missing email",
+    testname: "Missing Email",
     expectation: "error message",
     error_message: "required",
     data: {
@@ -91,7 +91,7 @@ const signin_testcase = [
     },
   },
   {
-    testname: "missing fullname",
+    testname: "Missing Full Name",
     expectation: "error message",
     error_message: "required",
     data: {
@@ -101,7 +101,7 @@ const signin_testcase = [
     },
   },
   {
-    testname: "missing everything",
+    testname: "Missing All Fields",
     expectation: "error message",
     error_message: "required",
     data: {
@@ -111,7 +111,7 @@ const signin_testcase = [
     },
   },
   {
-    testname: "missing fullname and password",
+    testname: "Missing Full Name and Password",
     expectation: "error message",
     error_message: "required",
     data: {
@@ -121,7 +121,7 @@ const signin_testcase = [
     },
   },
   {
-    testname: "missing fullname and email",
+    testname: "Missing Full Name and Email",
     expectation: "error message",
     error_message: "required",
     data: {
@@ -131,7 +131,7 @@ const signin_testcase = [
     },
   },
   {
-    testname: "short password",
+    testname: "Short Password",
     expectation: "error message",
     error_message: "Password must be at least 6 characters long",
     data: {
@@ -141,7 +141,7 @@ const signin_testcase = [
     },
   },
   {
-    testname: "correct sign in",
+    testname: "Correct Sign Up",
     expectation: "sign in",
     error_message: "",
     data: {
@@ -151,7 +151,7 @@ const signin_testcase = [
     },
   },
   {
-    testname: "using already regestered email",
+    testname: "Using Already Registered Email",
     expectation: "error message",
     error_message: "Email already exists",
     data: {
@@ -161,7 +161,7 @@ const signin_testcase = [
     },
   },
   {
-    testname: "using already regestered name",
+    testname: "Using Already Registered Name",
     expectation: "error message",
     error_message: "user's name already exists",
     data: {
@@ -173,26 +173,26 @@ const signin_testcase = [
 ];
 
 let driver;
-describe("this are login tests", () => {
+describe("Login Tests", () => {
   before(async () => {
-    //opens browser before any test begins
+    // Opens browser before any test begins
     driver = await new Builder().forBrowser(Browser.CHROME).build();
-  })
+  });
   login_test_cases.forEach(({ testname, data, expectation, error_message }) => {
     it(testname, async () => {
-      //navigate to login page
+      // Navigate to login page
       await driver.get("http://localhost:5173/login");
 
-      //find enteries in the ui
+      // Find entries in the UI
       const email = driver.findElement(By.name("email"));
       const password = driver.findElement(By.name("password"));
       const send_btn = driver.findElement(By.id("submit-button"));
 
-      //insert data to the respective enteries if available
+      // Insert data into the respective fields
       email && (await email.sendKeys(data.email));
       password && (await password.sendKeys(data.password));
 
-      //login
+      // Login
       await send_btn.click();
 
       if (expectation === "login") {
@@ -219,35 +219,31 @@ describe("this are login tests", () => {
       }
     });
   });
-  it("checks whethere the account the user logged in to is the users account", async () => {
-    //navigate to login
+  it("Verifies That The Logged In Account Matches The User's Account", async () => {
+    // Navigate to login
     await driver.get("http://localhost:5173/login");
 
-    //loggin
-    const useremail = "bereket@gmail.com"
-    const userpassword = "b123456789"
-    //find enteries in the ui
+    // Login
+    const useremail = "bereket@gmail.com";
+    const userpassword = "b123456789";
     const email = driver.findElement(By.name("email"));
     const password = driver.findElement(By.name("password"));
     const send_btn = driver.findElement(By.id("submit-button"));
 
-    //insert data to the respective enteries if available
     email && (await email.sendKeys(useremail));
     password && (await password.sendKeys(userpassword));
 
-    //login
-
     await send_btn.click();
 
-    //navigate to profile
+    // Navigate to profile
     const profile_link = await driver.wait(
       until.elementLocated(By.name("profile")),
       1000
     );
 
     await profile_link.click();
-    //validate that the email the user used to login is the same as the email in the profile
 
+    // Validate that the email used for login matches the profile email
     const profile_email = driver.wait(
       until.elementLocated(By.name("email")),
       1000
@@ -263,24 +259,24 @@ describe("this are login tests", () => {
   });
 });
 
-describe("this are tests for sign in", async () => {
+describe("Sign Up Tests", async () => {
   signin_testcase.forEach(({ testname, data, expectation, error_message }) => {
     it(testname, async () => {
-      //navigate to signin page
+      // Navigate to sign up page
       await driver.get("http://localhost:5173/signup");
 
-      //find enteries in the ui
+      // Find entries in the UI
       const fullname = driver.findElement(By.name("fullName"));
       const email = driver.findElement(By.name("email"));
       const password = driver.findElement(By.name("password"));
       const send_btn = driver.findElement(By.id("submit-button"));
 
-      //insert data to the respective enteries if available
+      // Insert data into the respective fields
       fullname && (await fullname.sendKeys(data.fullname));
       email && (await email.sendKeys(data.email));
       password && (await password.sendKeys(data.password));
 
-      //sign in
+      // Sign up
       send_btn.click();
 
       if (expectation === "sign in") {
@@ -307,13 +303,11 @@ describe("this are tests for sign in", async () => {
       }
     });
   });
-  it("checks whethere the account the user signed in into is the users account", async () => {
-    //navigate to login
+  it("Verifies That The Signed Up Account Matches The User's Account", async () => {
+    // Navigate to sign up page
     await driver.get("http://localhost:5173/signup");
 
-    //loggin
-
-    //find enteries in the ui
+    // Login via sign up flow
     const fullname = driver.wait(
       until.elementLocated(By.name("fullName")),
       1000
@@ -327,42 +321,34 @@ describe("this are tests for sign in", async () => {
       until.elementLocated(By.id("submit-button")),
       1000
     );
-    const userfull_name = "bereket136"
-    const useremail = "bereket136@gmail.com"
-    //insert data to the respective enteries if available
-    fullname && (await fullname.sendKeys(userfull_name));
-
-    email && (await email.sendKeys(useremail));
+    const userFullName = "bereket136";
+    const userEmail = "bereket136@gmail.com";
+    fullname && (await fullname.sendKeys(userFullName));
+    email && (await email.sendKeys(userEmail));
     password && (await password.sendKeys("bb123456789"));
 
-    //login
-
+    // Sign up
     await send_btn.click();
 
-    //navigate to profile
+    // Navigate to profile
     const profile_link = await driver.wait(
       until.elementLocated(By.name("profile")),
       1000
     );
 
     await profile_link.click();
-    //validate that the email the user used to login is the same as the email in the profile
 
+    // Validate that the email used for sign up matches the profile email
     const profile_email = driver.wait(
       until.elementLocated(By.name("email")),
       1000
     );
 
-    assert.strictEqual(useremail, await profile_email.getText());
-
-
-
+    assert.strictEqual(userEmail, await profile_email.getText());
   });
 
   after(() => {
-    //closes browser after all tests are run
+    // Close the browser after all tests are run
     driver.quit();
-  })
-
-
+  });
 });
