@@ -3,7 +3,7 @@ import { data } from "react-router-dom";
 import { Builder, Browser, By, until } from "selenium-webdriver";
 import assert from "assert";
 
-let login_test_cases = [
+let loginTestCases = [
   {
     testname: "Correct Login",
     expectation: "login",
@@ -69,7 +69,7 @@ let login_test_cases = [
   },
 ];
 
-const signin_testcase = [
+const signUpTestCases = [
   {
     testname: "Missing Password",
     expectation: "error message",
@@ -178,7 +178,7 @@ describe("Login Tests", () => {
     // Opens browser before any test begins
     driver = await new Builder().forBrowser(Browser.CHROME).build();
   });
-  login_test_cases.forEach(({ testname, data, expectation, error_message }) => {
+  loginTestCases.forEach(({ testname, data, expectation, error_message }) => {
     it(testname, async () => {
       // Navigate to login page
       await driver.get("http://localhost:5173/login");
@@ -260,7 +260,7 @@ describe("Login Tests", () => {
 });
 
 describe("Sign Up Tests", async () => {
-  signin_testcase.forEach(({ testname, data, expectation, error_message }) => {
+  signUpTestCases.forEach(({ testname, data, expectation, error_message }) => {
     it(testname, async () => {
       // Navigate to sign up page
       await driver.get("http://localhost:5173/signup");
