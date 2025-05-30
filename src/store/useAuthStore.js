@@ -2,7 +2,8 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 import { create } from 'zustand';
 
-const BASE_URL = 'http://localhost:5200/api'; // Consistent base URL
+// const BASE_URL = 'http://localhost:5200/api'; // Consistent base URL
+const BASE_URL = 'https://testing-backend-xq50.onrender.com/api'; // Consistent base URL
 
 const axiosInstance = axios.create({
   baseURL: BASE_URL,

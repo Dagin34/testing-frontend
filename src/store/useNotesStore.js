@@ -1,7 +1,19 @@
 import { create } from "zustand";
 import toast from "react-hot-toast";
-import { axiosInstance } from "../lib/axios";
+// import { axiosInstance } from "../lib/axios";
+import axios from 'axios';
 import { useAuthStore } from "./useAuthStore";
+
+// const BASE_URL = 'http://localhost:5200/api'; // Consistent base URL
+const BASE_URL = 'https://testing-backend-xq50.onrender.com/api'; // Consistent base URL
+
+const axiosInstance = axios.create({
+  baseURL: BASE_URL,
+  withCredentials: true, //  Allow sending cookies with requests
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
 
 export const useNotesStore = create((set, get) => ({
   notes: [],
